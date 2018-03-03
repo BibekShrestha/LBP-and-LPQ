@@ -1,0 +1,4 @@
+Filename
+CreateSVMtrainingset
+trainSVM
+classifyUsingSVM

@@ -1,0 +1,329 @@
+.
+├── ClassifyUsingSVM.m
+├── CreateSVMtrainingset.m
+├── CurrentdirectoryStructure.inf
+├── Filename.m
+├── main.m
+├── matlab.mat
+├── ProcessedData
+│   ├── Classes.mat
+│   ├── Testdata.mat
+│   ├── TestImageData.mat
+│   ├── Traindata.mat
+│   ├── TrainedSVM.mat
+│   └── TrainImageData.mat
+├── Readme.inf
+├── Test
+│   ├── Canon
+│   │   └── Canon DIGITAL IXUS 55
+│   │       ├── Canon_Ixus55_0_3119.JPG
+│   │       ├── Canon_Ixus55_0_3120.JPG
+│   │       ├── Canon_Ixus55_0_3121.JPG
+│   │       ├── Canon_Ixus55_0_3122.JPG
+│   │       ├── Canon_Ixus55_0_3123.JPG
+│   │       ├── Canon_Ixus55_0_3199.JPG
+│   │       ├── Canon_Ixus55_0_3200.JPG
+│   │       ├── Canon_Ixus55_0_3201.JPG
+│   │       ├── Canon_Ixus55_0_3202.JPG
+│   │       └── Canon_Ixus55_0_3203.JPG
+│   └── SONY
+│       └── DSC-H50
+│           ├── Sony_DSC-H50_0_47592.JPG
+│           ├── Sony_DSC-H50_0_47593.JPG
+│           ├── Sony_DSC-H50_0_47594.JPG
+│           ├── Sony_DSC-H50_0_47595.JPG
+│           ├── Sony_DSC-H50_0_47795.JPG
+│           ├── Sony_DSC-H50_0_47796.JPG
+│           ├── Sony_DSC-H50_0_47797.JPG
+│           └── Sony_DSC-H50_0_47798.JPG
+├── Texturefeatures.m
+├── Train
+│   ├── Canon
+│   │   └── Canon DIGITAL IXUS 55
+│   │       ├── Canon_Ixus55_0_3074.JPG
+│   │       ├── Canon_Ixus55_0_3075.JPG
+│   │       ├── Canon_Ixus55_0_3076.JPG
+│   │       ├── Canon_Ixus55_0_3077.JPG
+│   │       ├── Canon_Ixus55_0_3078.JPG
+│   │       ├── Canon_Ixus55_0_3079.JPG
+│   │       ├── Canon_Ixus55_0_3080.JPG
+│   │       ├── Canon_Ixus55_0_3081.JPG
+│   │       ├── Canon_Ixus55_0_3082.JPG
+│   │       ├── Canon_Ixus55_0_3083.JPG
+│   │       ├── Canon_Ixus55_0_3084.JPG
+│   │       ├── Canon_Ixus55_0_3085.JPG
+│   │       ├── Canon_Ixus55_0_3086.JPG
+│   │       ├── Canon_Ixus55_0_3087.JPG
+│   │       ├── Canon_Ixus55_0_3088.JPG
+│   │       ├── Canon_Ixus55_0_3089.JPG
+│   │       ├── Canon_Ixus55_0_3090.JPG
+│   │       ├── Canon_Ixus55_0_3091.JPG
+│   │       ├── Canon_Ixus55_0_3092.JPG
+│   │       ├── Canon_Ixus55_0_3093.JPG
+│   │       ├── Canon_Ixus55_0_3094.JPG
+│   │       ├── Canon_Ixus55_0_3095.JPG
+│   │       ├── Canon_Ixus55_0_3096.JPG
+│   │       ├── Canon_Ixus55_0_3097.JPG
+│   │       ├── Canon_Ixus55_0_3098.JPG
+│   │       ├── Canon_Ixus55_0_3099.JPG
+│   │       ├── Canon_Ixus55_0_3100.JPG
+│   │       ├── Canon_Ixus55_0_3101.JPG
+│   │       ├── Canon_Ixus55_0_3102.JPG
+│   │       ├── Canon_Ixus55_0_3103.JPG
+│   │       ├── Canon_Ixus55_0_3104.JPG
+│   │       ├── Canon_Ixus55_0_3105.JPG
+│   │       ├── Canon_Ixus55_0_3106.JPG
+│   │       ├── Canon_Ixus55_0_3107.JPG
+│   │       ├── Canon_Ixus55_0_3108.JPG
+│   │       ├── Canon_Ixus55_0_3109.JPG
+│   │       ├── Canon_Ixus55_0_3110.JPG
+│   │       ├── Canon_Ixus55_0_3111.JPG
+│   │       ├── Canon_Ixus55_0_3112.JPG
+│   │       ├── Canon_Ixus55_0_3113.JPG
+│   │       ├── Canon_Ixus55_0_3114.JPG
+│   │       ├── Canon_Ixus55_0_3115.JPG
+│   │       ├── Canon_Ixus55_0_3116.JPG
+│   │       ├── Canon_Ixus55_0_3117.JPG
+│   │       ├── Canon_Ixus55_0_3118.JPG
+│   │       ├── Canon_Ixus55_0_3194.JPG
+│   │       ├── Canon_Ixus55_0_3195.JPG
+│   │       ├── Canon_Ixus55_0_3196.JPG
+│   │       ├── Canon_Ixus55_0_3197.JPG
+│   │       ├── Canon_Ixus55_0_3198.JPG
+│   │       ├── Canon_Ixus55_0_3204.JPG
+│   │       ├── Canon_Ixus55_0_3205.JPG
+│   │       ├── Canon_Ixus55_0_3206.JPG
+│   │       ├── Canon_Ixus55_0_3207.JPG
+│   │       ├── Canon_Ixus55_0_3208.JPG
+│   │       ├── Canon_Ixus55_0_3209.JPG
+│   │       ├── Canon_Ixus55_0_3210.JPG
+│   │       ├── Canon_Ixus55_0_3211.JPG
+│   │       ├── Canon_Ixus55_0_3212.JPG
+│   │       ├── Canon_Ixus55_0_3213.JPG
+│   │       ├── Canon_Ixus55_0_3214.JPG
+│   │       ├── Canon_Ixus55_0_3215.JPG
+│   │       ├── Canon_Ixus55_0_3216.JPG
+│   │       ├── Canon_Ixus55_0_3217.JPG
+│   │       ├── Canon_Ixus55_0_3218.JPG
+│   │       ├── Canon_Ixus55_0_3219.JPG
+│   │       ├── Canon_Ixus55_0_3220.JPG
+│   │       ├── Canon_Ixus55_0_3221.JPG
+│   │       ├── Canon_Ixus55_0_3222.JPG
+│   │       ├── Canon_Ixus55_0_3223.JPG
+│   │       ├── Canon_Ixus55_0_3224.JPG
+│   │       ├── Canon_Ixus55_0_3225.JPG
+│   │       ├── Canon_Ixus55_0_3226.JPG
+│   │       ├── Canon_Ixus55_0_3227.JPG
+│   │       ├── Canon_Ixus55_0_3228.JPG
+│   │       ├── Canon_Ixus55_0_3229.JPG
+│   │       ├── Canon_Ixus55_0_3230.JPG
+│   │       ├── Canon_Ixus55_0_3231.JPG
+│   │       ├── Canon_Ixus55_0_3232.JPG
+│   │       ├── Canon_Ixus55_0_3233.JPG
+│   │       ├── Canon_Ixus55_0_3234.JPG
+│   │       ├── Canon_Ixus55_0_3235.JPG
+│   │       ├── Canon_Ixus55_0_3236.JPG
+│   │       ├── Canon_Ixus55_0_3237.JPG
+│   │       ├── Canon_Ixus55_0_3238.JPG
+│   │       ├── Canon_Ixus55_0_3239.JPG
+│   │       ├── Canon_Ixus55_0_3240.JPG
+│   │       ├── Canon_Ixus55_0_3241.JPG
+│   │       ├── Canon_Ixus55_0_3242.JPG
+│   │       └── Canon_Ixus55_0_3243.JPG
+│   └── SONY
+│       └── DSC-H50
+│           ├── Sony_DSC-H50_0_47546.JPG
+│           ├── Sony_DSC-H50_0_47547.JPG
+│           ├── Sony_DSC-H50_0_47548.JPG
+│           ├── Sony_DSC-H50_0_47549.JPG
+│           ├── Sony_DSC-H50_0_47550.JPG
+│           ├── Sony_DSC-H50_0_47551.JPG
+│           ├── Sony_DSC-H50_0_47552.JPG
+│           ├── Sony_DSC-H50_0_47553.JPG
+│           ├── Sony_DSC-H50_0_47554.JPG
+│           ├── Sony_DSC-H50_0_47555.JPG
+│           ├── Sony_DSC-H50_0_47556.JPG
+│           ├── Sony_DSC-H50_0_47557.JPG
+│           ├── Sony_DSC-H50_0_47558.JPG
+│           ├── Sony_DSC-H50_0_47559.JPG
+│           ├── Sony_DSC-H50_0_47560.JPG
+│           ├── Sony_DSC-H50_0_47561.JPG
+│           ├── Sony_DSC-H50_0_47562.JPG
+│           ├── Sony_DSC-H50_0_47563.JPG
+│           ├── Sony_DSC-H50_0_47564.JPG
+│           ├── Sony_DSC-H50_0_47565.JPG
+│           ├── Sony_DSC-H50_0_47566.JPG
+│           ├── Sony_DSC-H50_0_47567.JPG
+│           ├── Sony_DSC-H50_0_47568.JPG
+│           ├── Sony_DSC-H50_0_47569.JPG
+│           ├── Sony_DSC-H50_0_47570.JPG
+│           ├── Sony_DSC-H50_0_47571.JPG
+│           ├── Sony_DSC-H50_0_47572.JPG
+│           ├── Sony_DSC-H50_0_47573.JPG
+│           ├── Sony_DSC-H50_0_47574.JPG
+│           ├── Sony_DSC-H50_0_47575.JPG
+│           ├── Sony_DSC-H50_0_47576.JPG
+│           ├── Sony_DSC-H50_0_47577.JPG
+│           ├── Sony_DSC-H50_0_47578.JPG
+│           ├── Sony_DSC-H50_0_47579.JPG
+│           ├── Sony_DSC-H50_0_47580.JPG
+│           ├── Sony_DSC-H50_0_47581.JPG
+│           ├── Sony_DSC-H50_0_47582.JPG
+│           ├── Sony_DSC-H50_0_47583.JPG
+│           ├── Sony_DSC-H50_0_47584.JPG
+│           ├── Sony_DSC-H50_0_47585.JPG
+│           ├── Sony_DSC-H50_0_47586.JPG
+│           ├── Sony_DSC-H50_0_47587.JPG
+│           ├── Sony_DSC-H50_0_47588.JPG
+│           ├── Sony_DSC-H50_0_47589.JPG
+│           ├── Sony_DSC-H50_0_47590.JPG
+│           ├── Sony_DSC-H50_0_47591.JPG
+│           ├── Sony_DSC-H50_0_47789.JPG
+│           ├── Sony_DSC-H50_0_47790.JPG
+│           ├── Sony_DSC-H50_0_47791.JPG
+│           ├── Sony_DSC-H50_0_47792.JPG
+│           ├── Sony_DSC-H50_0_47793.JPG
+│           ├── Sony_DSC-H50_0_47794.JPG
+│           ├── Sony_DSC-H50_0_47799.JPG
+│           ├── Sony_DSC-H50_0_47800.JPG
+│           ├── Sony_DSC-H50_0_47801.JPG
+│           ├── Sony_DSC-H50_0_47802.JPG
+│           ├── Sony_DSC-H50_0_47803.JPG
+│           ├── Sony_DSC-H50_0_47804.JPG
+│           ├── Sony_DSC-H50_0_47805.JPG
+│           ├── Sony_DSC-H50_0_47806.JPG
+│           ├── Sony_DSC-H50_0_47807.JPG
+│           ├── Sony_DSC-H50_0_47808.JPG
+│           ├── Sony_DSC-H50_0_47809.JPG
+│           ├── Sony_DSC-H50_0_47810.JPG
+│           ├── Sony_DSC-H50_0_47811.JPG
+│           ├── Sony_DSC-H50_0_47812.JPG
+│           ├── Sony_DSC-H50_0_47813.JPG
+│           ├── Sony_DSC-H50_0_47814.JPG
+│           ├── Sony_DSC-H50_0_47815.JPG
+│           ├── Sony_DSC-H50_0_47816.JPG
+│           ├── Sony_DSC-H50_0_47817.JPG
+│           ├── Sony_DSC-H50_0_47818.JPG
+│           ├── Sony_DSC-H50_0_47819.JPG
+│           ├── Sony_DSC-H50_0_47820.JPG
+│           ├── Sony_DSC-H50_0_47821.JPG
+│           ├── Sony_DSC-H50_0_47822.JPG
+│           ├── Sony_DSC-H50_0_47823.JPG
+│           ├── Sony_DSC-H50_0_47824.JPG
+│           ├── Sony_DSC-H50_0_47825.JPG
+│           ├── Sony_DSC-H50_0_47826.JPG
+│           ├── Sony_DSC-H50_0_47827.JPG
+│           ├── Sony_DSC-H50_0_47828.JPG
+│           ├── Sony_DSC-H50_0_47829.JPG
+│           ├── Sony_DSC-H50_0_47830.JPG
+│           ├── Sony_DSC-H50_0_47831.JPG
+│           ├── Sony_DSC-H50_0_47832.JPG
+│           ├── Sony_DSC-H50_0_47833.JPG
+│           ├── Sony_DSC-H50_0_47834.JPG
+│           ├── Sony_DSC-H50_0_47835.JPG
+│           ├── Sony_DSC-H50_0_47836.JPG
+│           ├── Sony_DSC-H50_0_47837.JPG
+│           ├── Sony_DSC-H50_0_47838.JPG
+│           ├── Sony_DSC-H50_1_47991.JPG
+│           ├── Sony_DSC-H50_1_47992.JPG
+│           ├── Sony_DSC-H50_1_47993.JPG
+│           ├── Sony_DSC-H50_1_47994.JPG
+│           ├── Sony_DSC-H50_1_47995.JPG
+│           ├── Sony_DSC-H50_1_47996.JPG
+│           ├── Sony_DSC-H50_1_47997.JPG
+│           ├── Sony_DSC-H50_1_47998.JPG
+│           ├── Sony_DSC-H50_1_47999.JPG
+│           ├── Sony_DSC-H50_1_48000.JPG
+│           ├── Sony_DSC-H50_1_48001.JPG
+│           ├── Sony_DSC-H50_1_48002.JPG
+│           ├── Sony_DSC-H50_1_48003.JPG
+│           ├── Sony_DSC-H50_1_48004.JPG
+│           ├── Sony_DSC-H50_1_48005.JPG
+│           ├── Sony_DSC-H50_1_48006.JPG
+│           ├── Sony_DSC-H50_1_48007.JPG
+│           ├── Sony_DSC-H50_1_48008.JPG
+│           ├── Sony_DSC-H50_1_48009.JPG
+│           ├── Sony_DSC-H50_1_48010.JPG
+│           ├── Sony_DSC-H50_1_48011.JPG
+│           ├── Sony_DSC-H50_1_48012.JPG
+│           ├── Sony_DSC-H50_1_48013.JPG
+│           ├── Sony_DSC-H50_1_48014.JPG
+│           ├── Sony_DSC-H50_1_48015.JPG
+│           ├── Sony_DSC-H50_1_48016.JPG
+│           ├── Sony_DSC-H50_1_48017.JPG
+│           ├── Sony_DSC-H50_1_48018.JPG
+│           ├── Sony_DSC-H50_1_48019.JPG
+│           ├── Sony_DSC-H50_1_48020.JPG
+│           ├── Sony_DSC-H50_1_48021.JPG
+│           ├── Sony_DSC-H50_1_48022.JPG
+│           ├── Sony_DSC-H50_1_48023.JPG
+│           ├── Sony_DSC-H50_1_48024.JPG
+│           ├── Sony_DSC-H50_1_48025.JPG
+│           ├── Sony_DSC-H50_1_48026.JPG
+│           ├── Sony_DSC-H50_1_48027.JPG
+│           ├── Sony_DSC-H50_1_48028.JPG
+│           ├── Sony_DSC-H50_1_48029.JPG
+│           ├── Sony_DSC-H50_1_48030.JPG
+│           ├── Sony_DSC-H50_1_48031.JPG
+│           ├── Sony_DSC-H50_1_48032.JPG
+│           ├── Sony_DSC-H50_1_48033.JPG
+│           ├── Sony_DSC-H50_1_48034.JPG
+│           ├── Sony_DSC-H50_1_48035.JPG
+│           ├── Sony_DSC-H50_1_48036.JPG
+│           ├── Sony_DSC-H50_1_48037.JPG
+│           ├── Sony_DSC-H50_1_48038.JPG
+│           ├── Sony_DSC-H50_1_48039.JPG
+│           ├── Sony_DSC-H50_1_48040.JPG
+│           ├── Sony_DSC-H50_1_48320.JPG
+│           ├── Sony_DSC-H50_1_48321.JPG
+│           ├── Sony_DSC-H50_1_48322.JPG
+│           ├── Sony_DSC-H50_1_48323.JPG
+│           ├── Sony_DSC-H50_1_48324.JPG
+│           ├── Sony_DSC-H50_1_48325.JPG
+│           ├── Sony_DSC-H50_1_48326.JPG
+│           ├── Sony_DSC-H50_1_48327.JPG
+│           ├── Sony_DSC-H50_1_48328.JPG
+│           ├── Sony_DSC-H50_1_48329.JPG
+│           ├── Sony_DSC-H50_1_48330.JPG
+│           ├── Sony_DSC-H50_1_48331.JPG
+│           ├── Sony_DSC-H50_1_48332.JPG
+│           ├── Sony_DSC-H50_1_48333.JPG
+│           ├── Sony_DSC-H50_1_48334.JPG
+│           ├── Sony_DSC-H50_1_48335.JPG
+│           ├── Sony_DSC-H50_1_48336.JPG
+│           ├── Sony_DSC-H50_1_48337.JPG
+│           ├── Sony_DSC-H50_1_48338.JPG
+│           ├── Sony_DSC-H50_1_48339.JPG
+│           ├── Sony_DSC-H50_1_48340.JPG
+│           ├── Sony_DSC-H50_1_48341.JPG
+│           ├── Sony_DSC-H50_1_48342.JPG
+│           ├── Sony_DSC-H50_1_48343.JPG
+│           ├── Sony_DSC-H50_1_48344.JPG
+│           ├── Sony_DSC-H50_1_48345.JPG
+│           ├── Sony_DSC-H50_1_48346.JPG
+│           ├── Sony_DSC-H50_1_48347.JPG
+│           ├── Sony_DSC-H50_1_48348.JPG
+│           ├── Sony_DSC-H50_1_48349.JPG
+│           ├── Sony_DSC-H50_1_48350.JPG
+│           ├── Sony_DSC-H50_1_48351.JPG
+│           ├── Sony_DSC-H50_1_48352.JPG
+│           ├── Sony_DSC-H50_1_48353.JPG
+│           ├── Sony_DSC-H50_1_48354.JPG
+│           ├── Sony_DSC-H50_1_48355.JPG
+│           ├── Sony_DSC-H50_1_48356.JPG
+│           ├── Sony_DSC-H50_1_48357.JPG
+│           ├── Sony_DSC-H50_1_48358.JPG
+│           ├── Sony_DSC-H50_1_48359.JPG
+│           ├── Sony_DSC-H50_1_48360.JPG
+│           ├── Sony_DSC-H50_1_48361.JPG
+│           ├── Sony_DSC-H50_1_48362.JPG
+│           ├── Sony_DSC-H50_1_48363.JPG
+│           ├── Sony_DSC-H50_1_48364.JPG
+│           ├── Sony_DSC-H50_1_48365.JPG
+│           ├── Sony_DSC-H50_1_48366.JPG
+│           ├── Sony_DSC-H50_1_48367.JPG
+│           ├── Sony_DSC-H50_1_48368.JPG
+│           └── Sony_DSC-H50_1_48369.JPG
+└── trainSVM.m
+
+11 directories, 315 files

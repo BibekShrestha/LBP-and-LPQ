@@ -1,0 +1,62 @@
+Directory structure required.
+./Train/Maker_name1/model_name1/*.jpg
+./Train/Maker_name2/model_name2/*.jpg
+
+
+
+./Test/Maker_name2/model_name2/*.jpg
+./Test/Maker_name2/model_name2/*.jpg
+
+
+
+
+
+Run in following sequence.
+1. Filename
+2. CreateSVMTrainingset			**Takes a lot of time.
+3. trainSVM
+4. ClassifyUsingSVM.
+
+
+
+
+
+file info:
+
+1.Filename.m:
+ Creates Table containing image information { Image name, image Path, Camera_Maker, Camera_Model} and saves to file for use by Create SVM trainingset. Does so for both Train set and Test set separately.
+
+2. CreateSVMTrainingset.m:
+ Computes feature Vectors (Linear Binary pattern (LBP)) for individual image and in both Train Set and test set. And saves the Table containing {Image_label, feature_vector} separately for Test and Train Set.
+
+3. trainSVM.m:
+ Train SVW using the feature vectors form CreateSVMTrainingset.
+
+3. ClassifyUsingSVM.m:
+ Classifies the test set, and calculates classification accuracy.
+
+4. Readme.inf:
+ This file.
+
+5. main.m:
+ Runs the program in sequence.
+
+6. CurrentDirectoryStructure.inf:
+ Directory structure at time of writing of this readme file. Note that images are not present in this Zip file.
+
+7.images-94989123.txt
+ Current Test and train images downloaded form address in this file. (using "wget -i images-94989123.txt" command in linux. There might be alternatives in windows.)
+
+6. TextureFeatures:
+ Not required. Rough file.
+
+
+
+
+
+
+
+
+
+
+
