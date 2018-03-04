@@ -9,6 +9,10 @@ camera_Makers = dir( );
 camera_Makers = camera_Makers(3 :numel(camera_Makers) );
 sizeA = size(camera_Makers);
 Makers = strings(sizeA);
+
+
+
+TotalNumberOfModels = 0;
 Index = 0;
 
 for i = 1:sizeA 
@@ -17,10 +21,20 @@ for i = 1:sizeA
     camera_Models = dir(  );
     camera_Models = camera_Models(3:numel(camera_Models) );
     Num_Models = size(camera_Models);
+    
     Models = strings( Num_Models );
     
+    
+    
+    
     for j = 1:Num_Models
+        
+        
+        TotalNumberOfModels = TotalNumberOfModels +  1;
+        
         Models(j) = camera_Models(j).name;
+        ModelNames(TotalNumberOfModels).Name = char(Models(j));
+        
         cd( char(Models(j) ));
         Samples =  [dir( '*.jpg'), dir( '*.JPG') ] ;
         
@@ -42,6 +56,7 @@ for i = 1:sizeA
             
 end
 cd('..')
+
 
 
 TrainImages = struct2table(TrainImages);
@@ -91,4 +106,4 @@ cd('..')
 
 TestImages = struct2table(TestImages);
 save('ProcessedData/TestImageData.mat','TestImages');
-
+save('ProcessedData/ModelNames.mat','ModelNames');

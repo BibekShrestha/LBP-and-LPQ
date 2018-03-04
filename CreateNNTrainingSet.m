@@ -1,12 +1,35 @@
 
 %%%%Train Data
 load ProcessedData/TrainImageData.mat;
-NumberOfImages  = size(TrainImages);
-NumberOfImages = NumberOfImages(1);
+load ProcessedData/TestImageData.mat;
+load ProcessedData/ModelNames
 
-Features = zeros( NumberOfImages, 236 );
+NumberOfModels = size(ModelNames);
+NumberOfModels = NumberOfModels(2);
 
-for i = 1:NumberOfImages
+ValueSet = 1:NumberOfModels;
+KeySet = {};
+
+for i = 1:NumberOfModels
+    KeySet =  [ KeySet, ModelNames(i).Name];
+end
+
+ModelMap = containers.Map(KeySet,ValueSet);
+
+
+NumberOfTrainImages  = size(TrainImages);
+NumberOfTrainImages = NumberOfTrainImages(1);
+
+NumberOfTestImages  = size(TestImages);
+NumberOfTestImages = NumberOfTestImages(1);
+
+FeaturesInputs = zeros( NumberOfTrainImages + NumberOfTestImages, 236 );
+
+
+CameraTargets = zeros(NumberOfTrainImages + NumberOfTestImages, NumberOfModels);
+
+
+for i = 1:NumberOfTrainImages
     ImageName = TrainImages.name(i);
     ImageClass = TrainImages.model(i);
     ImagePath = TrainImages.path(i);
@@ -18,6 +41,7 @@ for i = 1:NumberOfImages
     
     HSpace = HSVimage(: , :, 1);
     VSpace = HSVimage(: , :, 3);
+    
     HSpaceNoise = HSVNoise( : , : , 1);
     VSpaceNoise = HSVNoise( : , : , 3);
     
@@ -26,28 +50,23 @@ for i = 1:NumberOfImages
     HFeatureNoise = extractLBPFeatures(HSpaceNoise);
     VFeatureNoise = extractLBPFeatures(VSpaceNoise);
     
-    Features(i,:) = horzcat(HFeature, VFeature,HFeatureNoise, VFeatureNoise);
+    FeaturesInputs(i,:) = horzcat(HFeature, VFeature,HFeatureNoise, VFeatureNoise);
     
+    CameraTargets(i,ModelMap(char(ImageClass))) = 1;
     
+       
 end
 
-Traindata = table(TrainImages.model, Features);
-Traindata.Properties.VariableNames = {  'Class' , 'LBPFeatures' } ;
+index = i;
 
-save('ProcessedData/Traindata.mat','Traindata');
+
+
 
 
 
 %%%Test data
 
-
-load ProcessedData/TestImageData.mat;
-NumberOfImages  = size(TestImages);
-NumberOfImages = NumberOfImages(1);
-
-Features = zeros( NumberOfImages, 236 );
-
-for i = 1:NumberOfImages
+for i = 1:NumberOfTestImages
     ImageName = TestImages.name(i);
     ImageClass = TestImages.model(i);
     ImagePath = TestImages.path(i);
@@ -66,13 +85,11 @@ for i = 1:NumberOfImages
     HFeatureNoise = extractLBPFeatures(HSpaceNoise);
     VFeatureNoise = extractLBPFeatures(VSpaceNoise);
     
-    Features(i,:) = horzcat(HFeature, VFeature,HFeatureNoise, VFeatureNoise);
-    
-    %Features =  vertcat( Features, horzcat(HFeature, VFeature)) ;
+    FeaturesInputs(i,:) = horzcat(HFeature, VFeature,HFeatureNoise, VFeatureNoise);
     
 end
 
-Testdata = table(TestImages.model,Features);
-Testdata.Properties.VariableNames = {  'Class' , 'LBPFeatures' } ;
 
-save('ProcessedData/Testdata.mat','Testdata');
+
+save('ProcessedData/NN/FeaturesInupt','FeaturesInputs');
+save('ProcessedData/NN/CameraTargets','CameraTargets');
