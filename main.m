@@ -1,4 +1,7 @@
 Filename
-CreateSVMtrainingset
-trainSVM
+%CreateSVMtrainingset
+%CreateNNTrainingSet
+
+%trainSVM
+
 classifyUsingSVM

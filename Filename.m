@@ -1,3 +1,30 @@
+% %
+%
+% Author: Bibek Shrestha
+%
+% Major Project 
+%
+% Date: Mar 4. 2018
+% Time : 8:17 PM
+%
+% Reads image names and classes from pre-structured directory hierarchy
+% Saves 
+%           Name of all camera models.
+%           Name, path, model,and make of all camera in a table 
+%           As testimage.mat and 
+%     
+% 
+%    
+% EXAMPLE:
+%   Image = imread('woman_color');
+%   Noise = deNoisingFilter(Image);
+% DEPENDENCIES:
+% WaveNoise.m and Threshold.m
+%
+%
+
+
+
 clc ;
 clear all;
 
@@ -60,7 +87,7 @@ cd('..')
 
 
 TrainImages = struct2table(TrainImages);
-save('ProcessedData/TrainImageData.mat','TrainImages');
+save('ProcessedData/TrainImages.mat','TrainImages');
 
 
 
@@ -105,5 +132,6 @@ cd('..')
 
 
 TestImages = struct2table(TestImages);
-save('ProcessedData/TestImageData.mat','TestImages');
+save('ProcessedData/TestImages.mat','TestImages');
+
 save('ProcessedData/ModelNames.mat','ModelNames');

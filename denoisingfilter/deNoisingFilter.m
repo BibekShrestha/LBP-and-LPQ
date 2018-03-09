@@ -25,10 +25,10 @@ function [Noise] = deNoisingFilter(Im)
 %
 %
 
-sigma = 3;      % LEt
+sigma = 5;      % LEt
 var = sigma.^2;
-Mdes = 1000;
-Ndes = 750;
+Mdes = 2800;
+Ndes = 2100;
 
 current = dwtmode('status','nodisp');
 dwtmode('zpd','nodisp');
@@ -44,7 +44,7 @@ else
         M = N;
         N = temp;
         clear temp;
-        ImR = ImR'; ImG = ImG'; ImB = ImB';
+        ImR = rot90(ImR,3); ImG = rot90(ImG,3); ImB = rot90(ImB,3);
     end
     if(M<Mdes)
         dM = floor((Mdes - M)/2);
@@ -56,18 +56,17 @@ else
         ImG = imcrop(ImG, [(M-Mdes)/2 0 Mdes N]);
         ImB = imcrop(ImB, [(M-Mdes)/2 0 Mdes N]);
     end
-    M = Mdes;
+
     if(N<Ndes)
         dN = floor((Ndes - N)/2);
         ImR = padarray(ImR, [0, dN]);
         ImG = padarray(ImG, [0, dN]);
         ImB = padarray(ImB, [0, dN]);
     elseif (N>Ndes)
-        ImR = imcrop(ImR, [(M-Mdes)/2 0 Mdes N]);
-        ImG = imcrop(ImG, [(M-Mdes)/2 0 Mdes N]);
-        ImB = imcrop(ImB, [(M-Mdes)/2 0 Mdes N]);
+        ImR = imcrop(ImR, [0 (N-Ndes)/2 Mdes Ndes]);
+        ImG = imcrop(ImG, [0 (N-Ndes)/2 Mdes Ndes]);
+        ImB = imcrop(ImB, [0 (N-Ndes)/2 Mdes Ndes]);
     end
-    N = Ndes;
     
     % for Red
     [cR,sR] = wavedec2(ImR, 4, 'db8');

@@ -1,6 +1,6 @@
 
 %%%%Train Data
-load ProcessedData/TrainImageData.mat;
+load ProcessedData/TrainImages.mat;
 NumberOfImages  = size(TrainImages);
 NumberOfImages = NumberOfImages(1);
 
@@ -41,7 +41,7 @@ save('ProcessedData/Traindata.mat','Traindata');
 %%%Test data
 
 
-load ProcessedData/TestImageData.mat;
+load ProcessedData/TestImages.mat;
 NumberOfImages  = size(TestImages);
 NumberOfImages = NumberOfImages(1);
 
